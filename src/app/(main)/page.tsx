@@ -1,6 +1,6 @@
 import {cookies} from 'next/headers'
 
-import {CreatePost} from '~/app/_components/create-post'
+import {CreatePost} from '~/components/create-post'
 import {api} from '~/trpc/server'
 import {createClient} from '~/utils/supabase/server'
 
