@@ -24,7 +24,6 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
         <body className={`font-sans ${inter.variable}`}>
         <TRPCReactProvider>
             <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-                <Navbar/>
                 {children}
             </ThemeProvider>
         </TRPCReactProvider>
