@@ -131,7 +131,7 @@ export default function Login() {
                         >
                             <div className="flex items-center gap-2">
                                 <FaGithub className="h-5 w-5"/>
-                                <p>Sign in with GitHub</p>
+                                <p>Sign up with GitHub</p>
                             </div>
                         </Button>
                         <Button
@@ -140,7 +140,7 @@ export default function Login() {
                         >
                             <div className="flex items-center gap-2">
                                 <FcGoogle className="h-5 w-5"/>
-                                <p>Sign in with Google</p>
+                                <p>Sign up with Google</p>
                             </div>
                         </Button>
                         <p className="text-muted-foreground py-4 text-center text-sm underline">

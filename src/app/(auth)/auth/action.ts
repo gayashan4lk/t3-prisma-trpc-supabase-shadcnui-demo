@@ -7,7 +7,7 @@ import type {SignupInput} from "../signup/page";
 const supabase = createClient(cookies());
 const origin = headers().get("origin");
 
-export const signUp = async (data: SignupInput) => {
+export async function signUp(data: SignupInput) {
     "use server";
 
     const {error} = await supabase.auth.signUp({
@@ -23,4 +23,18 @@ export const signUp = async (data: SignupInput) => {
             error: error.message,
         };
     }
-};
+}
+
+export async function signIn(data: { email: string, password: string }) {
+    "use server";
+
+    const {error} = await supabase.auth.signInWithPassword({
+        email: data.email,
+        password: data.password,
+    });
+    if (error) {
+        return {
+            error: error.message,
+        };
+    }
+}

@@ -10,12 +10,8 @@ const routes: { title: string; href: string }[] = [
     {title: "Pricing", href: "#pricing"},
 ];
 
-const Navbar: React.FC = () => {
+export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
-
-    const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
-    };
 
     return (
         <div className="flex h-16 items-center justify-between px-6 lg:px-14">
@@ -49,9 +45,13 @@ const Navbar: React.FC = () => {
                 </Link>
             </div>
 
-            {menuOpen && <MobileMenu toggleMenu={toggleMenu}/>}
+            {menuOpen && <MobileMenu toggleMenu={() => {
+                setMenuOpen(!menuOpen);
+            }}/>}
 
-            <button onClick={toggleMenu} className="sm:hidden">
+            <button onClick={() => {
+                setMenuOpen(!menuOpen);
+            }} className="sm:hidden">
                 {menuOpen ? (
                     <XMarkIcon className="h-7 w-7"/>
                 ) : (
@@ -62,7 +62,11 @@ const Navbar: React.FC = () => {
     );
 };
 
-const MobileMenu: React.FC<{ toggleMenu: () => void }> = ({toggleMenu}) => {
+type Props = {
+    toggleMenu: () => void
+}
+
+export function MobileMenu({toggleMenu}: Props) {
     return (
         <div className="absolute right-0 top-16 flex h-[calc(100vh-64px)] w-full flex-col">
             <div className="bg-background  flex w-full grow flex-col gap-1 px-4 pb-2 sm:hidden">
@@ -101,5 +105,3 @@ const MobileMenu: React.FC<{ toggleMenu: () => void }> = ({toggleMenu}) => {
         </div>
     );
 };
-
-export default Navbar;
