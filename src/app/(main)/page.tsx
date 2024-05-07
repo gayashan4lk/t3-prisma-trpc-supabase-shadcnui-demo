@@ -1,5 +1,3 @@
-import {cookies} from 'next/headers'
-
 import {CreatePost} from '~/components/create-post'
 import {api} from '~/trpc/server'
 import {createClient} from '~/utils/supabase/server'
@@ -9,7 +7,7 @@ import Link from "next/link";
 export default async function Home() {
     // const hello = await api.post.hello({ text: "from tRPC" });
 
-    const supabase = createClient(cookies())
+    const supabase = createClient()
     const {
         data: {user},
     } = await supabase.auth.getUser()
@@ -17,7 +15,7 @@ export default async function Home() {
 
     async function signOut() {
         'use server'
-        const supabase = createClient(cookies())
+        const supabase = createClient()
         await supabase.auth.signOut()
         return redirect('/login')
     }
@@ -26,7 +24,7 @@ export default async function Home() {
         return (
             <main>
                 <Link
-                    href="/login"
+                    href={"/login"}
                     className="bg-btn-background hover:bg-btn-background-hover flex rounded-md px-3 py-2 no-underline"
                 >
                     Login

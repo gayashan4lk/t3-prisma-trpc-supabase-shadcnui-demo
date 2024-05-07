@@ -1,10 +1,10 @@
 "use server";
 
 import {createClient} from "~/utils/supabase/server";
-import {cookies, headers} from "next/headers";
+import {headers} from "next/headers";
 import type {SignupInput} from "../signup/page";
 
-const supabase = createClient(cookies());
+const supabase = createClient();
 const origin = headers().get("origin");
 
 export async function signUp(data: SignupInput) {
